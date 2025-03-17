@@ -15,6 +15,18 @@ func mainMenu() {
 	calc()
 }
 
+func divisorZero(num1Float64 float64, num2Float64 float64) {
+	fmt.Println("")
+	fmt.Println("  Any number divided by 0 is undefined in mathematics")
+	mainMenu()
+}
+
+func zeroMultiplied(num1Float64 float64, num2Float64 float64) {
+	fmt.Println("")
+	fmt.Println("  Any number multiplied by 0 is 0 in mathematics")
+	mainMenu()
+}
+
 func calc() {
 	fmt.Print("\033[H\033[2J")
 	fmt.Println("")
@@ -81,6 +93,8 @@ func calc() {
 		if validateNum3Err != nil {
 			fmt.Println("   Current liabilities must be a number")
 			mainMenu()
+		} else if num3Float64 == 0 {
+			divisorZero(num1Float64, num2Float64)
 		}
 		fmt.Println("")
 		ans := (num1Float64 - num2Float64) / num3Float64
@@ -122,7 +136,9 @@ func calc() {
 		if validateNum3Err != nil {
 			fmt.Println("   Current liabilities must be a number")
 			mainMenu()
-		}
+		} else if num3Float64 == 0 {
+			divisorZero(num1Float64, num2Float64)
+		}		
 		fmt.Println("")
 		ans := (num1Float64 + num2Float64) / num3Float64
 		fmt.Println("   The answer is: ", ans)
