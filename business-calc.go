@@ -83,7 +83,7 @@ func calc() {
 			mainMenu()
 		}
 		fmt.Println("")
-		ans := (num1Float64 - num2Float64)/num3Float64
+		ans := (num1Float64 - num2Float64) / num3Float64
 		fmt.Println("   The answer is: ", ans)
 		mainMenu()
 	} else if option == 2 {
@@ -124,7 +124,7 @@ func calc() {
 			mainMenu()
 		}
 		fmt.Println("")
-		ans := (num1Float64 + num2Float64)/num3Float64
+		ans := (num1Float64 + num2Float64) / num3Float64
 		fmt.Println("   The answer is: ", ans)
 		mainMenu()
 	} else if option == 3 {
@@ -155,7 +155,7 @@ func calc() {
 			mainMenu()
 		}
 		fmt.Println("")
-		ans := (num1Float64/num2Float64)*365
+		ans := (num1Float64 / num2Float64) * 365
 		fmt.Println("   The answer is: ", ans)
 		mainMenu()
 	} else if option == 4 {
@@ -186,7 +186,7 @@ func calc() {
 			mainMenu()
 		}
 		fmt.Println("")
-		ans := (num1Float64/num2Float64)*100
+		ans := (num1Float64 / num2Float64) * 100
 		fmt.Println("   The answer is: ", ans)
 		mainMenu()
 	} else if option == 5 {
@@ -217,7 +217,7 @@ func calc() {
 			mainMenu()
 		}
 		fmt.Println("")
-		ans := (num1Float64/num2Float64)*100
+		ans := (num1Float64 / num2Float64) * 100
 		fmt.Println("   The answer is: ", ans)
 		mainMenu()
 	} else if option == 6 {
@@ -248,7 +248,7 @@ func calc() {
 			mainMenu()
 		}
 		fmt.Println("")
-		ans := num1Float64/num2Float64
+		ans := num1Float64 / num2Float64
 		fmt.Println("   The answer is: ", ans)
 		mainMenu()
 	} else if option == 7 {
