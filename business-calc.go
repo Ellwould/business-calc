@@ -8,13 +8,18 @@ import (
 	"strconv"
 )
 
-var reset = "\033[0m" 
-var red = "\033[31m" 
-var green = "\033[32m" 
-var yellow = "\033[33m" 
-var blue = "\033[34m" 
-var magenta = "\033[35m" 
-var cyan = "\033[36m"
+// Text colours
+var resetColour = "\033[0m" 
+var textRed = "\033[31m" 
+var textGreen = "\033[32m" 
+var textYellow = "\033[33m" 
+var textBlue = "\033[34m" 
+var textMagenta = "\033[35m" 
+var textCyan = "\033[36m"
+var textWhite = "\033[37m"
+
+// Background colours
+var bgRed="\033[41m"
 
 func mainMenu() {
 	fmt.Println("")
@@ -25,7 +30,7 @@ func mainMenu() {
 
 func divisorZero() {
 	fmt.Println("")
-	fmt.Println("   Any number divided by 0 is undefined in mathematics")
+	fmt.Println(red+"   Any number divided by 0 is undefined in mathematics"+resetColour)
 	mainMenu()
 }
 
@@ -35,17 +40,17 @@ func calc() {
 	fmt.Println("   Please select a number from the following options:")
 	fmt.Println("")
 	fmt.Println("")
-	fmt.Println("   1) To calculate Acid Test Ratio")
+	fmt.Println(gray+"   1) To calculate Acid Test Ratio"+resetColour)
 	fmt.Println("")
-	fmt.Println("   2) To calculate Current Assets")
+	fmt.Println(green+"   2) To calculate Current Assets"+resetColour)
 	fmt.Println("")
-	fmt.Println("   3) To calculate Inventry Holding Period")
+	fmt.Println(yellow+"   3) To calculate Inventry Holding Period"+resetColour)
 	fmt.Println("")
-	fmt.Println("   4) To calculate Gross Profit Margin")
+	fmt.Println(blue+"   4) To calculate Gross Profit Margin"+resetColour)
 	fmt.Println("")
-	fmt.Println("   5) To calculate Net Profit Margin")
+	fmt.Println(magenta+"   5) To calculate Net Profit Margin"+resetColour)
 	fmt.Println("")
-	fmt.Println("   6) To calculate Current Ratio")
+	fmt.Println(cyan+"   6) To calculate Current Ratio"+resetColour)
 	fmt.Println("")
 	fmt.Println("   7) Exit Program")
 	fmt.Println("")
@@ -63,7 +68,7 @@ func calc() {
 		// Acid Test Ratio
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println("                    Acid Test Ratio Calculater")
+		fmt.Println(bgRed+"                    Acid Test Ratio Calculater")
 		fmt.Println("        [(current assets - inventry) / current liabilities]")
 		fmt.Println("")
 		// Current Assets
@@ -73,7 +78,7 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println("   Current assets must be a number")
+			fmt.Println(red+"   Current assets must be a number"+resetColour)
 			mainMenu()
 		}
 		// Inventry
@@ -83,7 +88,7 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println("   Inventry must be a number")
+			fmt.Println(red+"   Inventry must be a number"+resetColour)
 			mainMenu()
 		}
 		// Current Liabilities
@@ -93,7 +98,7 @@ func calc() {
 		validateNum3 := validator.New()
 		validateNum3Err := validateNum3.Var(num3, "numeric")
 		if validateNum3Err != nil {
-			fmt.Println("   Current liabilities must be a number")
+			fmt.Println(red+"   Current liabilities must be a number"+resetColour)
 			mainMenu()
 		} else if num3Float64 == 0 {
 			divisorZero()
