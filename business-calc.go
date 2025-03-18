@@ -8,8 +8,10 @@ import (
 	"strconv"
 )
 
+// Reset the colour
+var resetColour = "\033[0m"
+
 // Text colours
-var resetColour = "\033[0m" 
 var textRed = "\033[31m" 
 var textGreen = "\033[32m" 
 var textYellow = "\033[33m" 
@@ -20,6 +22,13 @@ var textWhite = "\033[37m"
 
 // Background colours
 var bgRed="\033[41m"
+var bgGreen="\033[42m"
+var bgYellow="\033[43m"
+var bgBlue="\033[44m"
+var bgPurple="\033[45m"
+var bgCyan="\033[46m"
+var bgWhite="\033[47m"
+var bgBlack="\033[40m"  
 
 func mainMenu() {
 	fmt.Println("")
