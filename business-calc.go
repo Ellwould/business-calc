@@ -19,6 +19,8 @@ var textBlue = "\033[34m"
 var textMagenta = "\033[35m" 
 var textCyan = "\033[36m"
 var textWhite = "\033[37m"
+var textBoldWhite = "\033[1;37m"  
+var textBoldBlack = "\033[1;30m"
 
 // Background colours
 var bgRed="\033[41m"
@@ -39,9 +41,15 @@ func mainMenu() {
 
 func divisorZero() {
 	fmt.Println("")
-	fmt.Println(red+"   Any number divided by 0 is undefined in mathematics"+resetColour)
+	fmt.Println("   "+bgRed+textBoldWhite+" Any number divided by 0 is undefined in mathematics "+resetColour)
 	mainMenu()
 }
+
+func wrongInput(input string) {
+	fmt.Println("")
+	fmt.Println("   "+bgRed+textBoldWhite+" "+input+" must be a number "+resetColour)
+	mainMenu()
+} 
 
 func calc() {
 	fmt.Print("\033[H\033[2J")
@@ -49,17 +57,17 @@ func calc() {
 	fmt.Println("   Please select a number from the following options:")
 	fmt.Println("")
 	fmt.Println("")
-	fmt.Println(gray+"   1) To calculate Acid Test Ratio"+resetColour)
+	fmt.Println("   "+bgYellow+textBoldBlack+" 1) To calculate Acid Test Ratio "+resetColour)
 	fmt.Println("")
-	fmt.Println(green+"   2) To calculate Current Assets"+resetColour)
+	fmt.Println(textGreen+"   2) To calculate Current Assets"+resetColour)
 	fmt.Println("")
-	fmt.Println(yellow+"   3) To calculate Inventry Holding Period"+resetColour)
+	fmt.Println(textYellow+"   3) To calculate Inventry Holding Period"+resetColour)
 	fmt.Println("")
-	fmt.Println(blue+"   4) To calculate Gross Profit Margin"+resetColour)
+	fmt.Println(textBlue+"   4) To calculate Gross Profit Margin"+resetColour)
 	fmt.Println("")
-	fmt.Println(magenta+"   5) To calculate Net Profit Margin"+resetColour)
+	fmt.Println(textMagenta+"   5) To calculate Net Profit Margin"+resetColour)
 	fmt.Println("")
-	fmt.Println(cyan+"   6) To calculate Current Ratio"+resetColour)
+	fmt.Println(textCyan+"   6) To calculate Current Ratio"+resetColour)
 	fmt.Println("")
 	fmt.Println("   7) Exit Program")
 	fmt.Println("")
@@ -77,7 +85,7 @@ func calc() {
 		// Acid Test Ratio
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println(bgRed+"                    Acid Test Ratio Calculater")
+		fmt.Println("                    Acid Test Ratio Calculater")
 		fmt.Println("        [(current assets - inventry) / current liabilities]")
 		fmt.Println("")
 		// Current Assets
@@ -87,8 +95,8 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println(red+"   Current assets must be a number"+resetColour)
-			mainMenu()
+			input := "Current assets"
+			wrongInput(input)                        		
 		}
 		// Inventry
 		fmt.Print("   Please enter inventry: ")
@@ -97,8 +105,8 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println(red+"   Inventry must be a number"+resetColour)
-			mainMenu()
+			input := "Inventry"
+			wrongInput(input)
 		}
 		// Current Liabilities
 		fmt.Print("   Please enter current liabilities: ")
@@ -107,14 +115,14 @@ func calc() {
 		validateNum3 := validator.New()
 		validateNum3Err := validateNum3.Var(num3, "numeric")
 		if validateNum3Err != nil {
-			fmt.Println(red+"   Current liabilities must be a number"+resetColour)
-			mainMenu()
+			input := "Current liabilities"
+			wrongInput(input)			
 		} else if num3Float64 == 0 {
 			divisorZero()
 		}
 		fmt.Println("")
 		ans := (num1Float64 - num2Float64) / num3Float64
-		fmt.Println("   The answer is: ", ans)
+		fmt.Println("   "+bgGreen+textBoldWhite+" The answer is:",ans,resetColour)
 		mainMenu()
 	} else if option == 2 {
 		// Current Assets
@@ -130,8 +138,8 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println("   Current assets must be a number")
-			mainMenu()
+			input := "Current assets"
+			wrongInput(input)                        			
 		}
 		// Inventry
 		fmt.Print("   Please enter inventry: ")
@@ -140,8 +148,8 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println("   Inventry must be a number")
-			mainMenu()
+			input := "Inventry"
+			wrongInput(input)                        			
 		}
 		// Current Liabilities
 		fmt.Print("   Please enter current liabilities: ")
@@ -150,14 +158,14 @@ func calc() {
 		validateNum3 := validator.New()
 		validateNum3Err := validateNum3.Var(num3, "numeric")
 		if validateNum3Err != nil {
-			fmt.Println("   Current liabilities must be a number")
-			mainMenu()
+			input := "Current liabilities"
+			wrongInput(input)                        			
 		} else if num3Float64 == 0 {
 			divisorZero()
 		}		
 		fmt.Println("")
 		ans := (num1Float64 + num2Float64) / num3Float64
-		fmt.Println("   The answer is: ", ans)
+		fmt.Println("   "+bgGreen+textBoldWhite+" The answer is:",ans,resetColour)
 		mainMenu()
 	} else if option == 3 {
 		//Inventry Holding Period
@@ -173,8 +181,8 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println("   Closing inventory must be a number")
-			mainMenu()
+			input := "Closing inventory"
+			wrongInput(input)                        		
 		}
 		// Inventry
 		fmt.Print("   Please enter cost of sales: ")
@@ -183,14 +191,14 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println("   Cost of sales must be a number")
-			mainMenu()
+			input := "Cost of sales"
+			wrongInput(input)                        			
 		} else if num2Float64 == 0 {
 		        divisorZero()
 		}
 		fmt.Println("")
 		ans := (num1Float64 / num2Float64) * 365
-		fmt.Println("   The answer is: ", ans)
+		fmt.Println("   "+bgGreen+textBoldWhite+" The answer is:",ans,resetColour)
 		mainMenu()
 	} else if option == 4 {
 		//Gross Profit Margin
@@ -206,8 +214,8 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println("   Gross Profit must be a number")
-			mainMenu()
+			input := "Gross profit"
+			wrongInput(input)
 		}
 		// Inventry
 		fmt.Print("   Please enter sales revenue: ")
@@ -216,14 +224,14 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println("   Cost of sales revenue must be a number")
-			mainMenu()
+			input := "Sales revenue"
+			wrongInput(input)                        			
 		} else if num2Float64 == 0 {
 		        divisorZero()                		
 		}
 		fmt.Println("")
 		ans := (num1Float64 / num2Float64) * 100
-		fmt.Println("   The answer is: ", ans)
+		fmt.Println("   "+bgGreen+textBoldWhite+" The answer is:",ans,resetColour)
 		mainMenu()
 	} else if option == 5 {
 		// Net Profit Margin
@@ -239,8 +247,8 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println("   Net Profit must be a number")
-			mainMenu()
+			input := "Net profit"
+			wrongInput(input)                        			
 		}
 		// Sales Revenue
 		fmt.Print("   Please enter sales revenue: ")
@@ -249,14 +257,14 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println("   Cost of sales revenue must be a number")
-			mainMenu()
+			input := "Sales revenue"
+			wrongInput(input)                        		
 		} else if num2Float64 == 0 {
 		        divisorZero()                		
 		}		
 		fmt.Println("")
 		ans := (num1Float64 / num2Float64) * 100
-		fmt.Println("   The answer is: ", ans)
+		fmt.Println("   "+bgGreen+textBoldWhite+" The answer is:",ans,resetColour)
 		mainMenu()
 	} else if option == 6 {
 		//Current Ratio
@@ -272,8 +280,8 @@ func calc() {
 		validateNum1 := validator.New()
 		validateNum1Err := validateNum1.Var(num1, "numeric")
 		if validateNum1Err != nil {
-			fmt.Println("   current assets must be a number")
-			mainMenu()
+			input := "Current assets"
+			wrongInput(input)                        		
 		}
 		// Sales Revenue
 		fmt.Print("   Please enter current liabilities: ")
@@ -282,14 +290,14 @@ func calc() {
 		validateNum2 := validator.New()
 		validateNum2Err := validateNum2.Var(num2, "numeric")
 		if validateNum2Err != nil {
-			fmt.Println("   current liabilities must be a number")
-			mainMenu()
+			input := "Current liabilities"
+			wrongInput(input)                        			
 		} else if num2Float64 == 0 {
 		        divisorZero()                		
 		}
 		fmt.Println("")
 		ans := num1Float64 / num2Float64
-		fmt.Println("   The answer is: ", ans)
+		fmt.Println("   "+bgGreen+textBoldWhite+" The answer is:",ans,resetColour)
 		mainMenu()
 	} else if option == 7 {
 		os.Exit(0)
