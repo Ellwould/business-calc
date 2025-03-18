@@ -21,12 +21,6 @@ func divisorZero() {
 	mainMenu()
 }
 
-func zeroMultiplied() {
-	fmt.Println("")
-	fmt.Println("   Any number multiplied by 0 is 0 in mathematics")
-	mainMenu()
-}
-
 func calc() {
 	fmt.Print("\033[H\033[2J")
 	fmt.Println("")
