@@ -15,15 +15,15 @@ func mainMenu() {
 	calc()
 }
 
-func divisorZero(num1Float64 float64, num2Float64 float64) {
+func divisorZero() {
 	fmt.Println("")
-	fmt.Println("  Any number divided by 0 is undefined in mathematics")
+	fmt.Println("   Any number divided by 0 is undefined in mathematics")
 	mainMenu()
 }
 
-func zeroMultiplied(num1Float64 float64, num2Float64 float64) {
+func zeroMultiplied() {
 	fmt.Println("")
-	fmt.Println("  Any number multiplied by 0 is 0 in mathematics")
+	fmt.Println("   Any number multiplied by 0 is 0 in mathematics")
 	mainMenu()
 }
 
@@ -61,8 +61,8 @@ func calc() {
 		// Acid Test Ratio
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println("              Acid Test Ratio Calculater")
-		fmt.Println("   (current assets - inventry / current liabilities)")
+		fmt.Println("                    Acid Test Ratio Calculater")
+		fmt.Println("        [(current assets - inventry) / current liabilities]")
 		fmt.Println("")
 		// Current Assets
 		fmt.Print("   Please enter current assets: ")
@@ -94,7 +94,7 @@ func calc() {
 			fmt.Println("   Current liabilities must be a number")
 			mainMenu()
 		} else if num3Float64 == 0 {
-			divisorZero(num1Float64, num2Float64)
+			divisorZero()
 		}
 		fmt.Println("")
 		ans := (num1Float64 - num2Float64) / num3Float64
@@ -104,8 +104,8 @@ func calc() {
 		// Current Assets
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println("              Current Assets Calculater")
-		fmt.Println("   (current assets + inventry / current liabilities)")
+		fmt.Println("                     Current Assets Calculater")
+		fmt.Println("        [(current assets + inventry) / current liabilities]")
 		fmt.Println("")
 		// Current Assets
 		fmt.Print("   Please enter current assets: ")
@@ -137,7 +137,7 @@ func calc() {
 			fmt.Println("   Current liabilities must be a number")
 			mainMenu()
 		} else if num3Float64 == 0 {
-			divisorZero(num1Float64, num2Float64)
+			divisorZero()
 		}		
 		fmt.Println("")
 		ans := (num1Float64 + num2Float64) / num3Float64
@@ -147,8 +147,8 @@ func calc() {
 		//Inventry Holding Period
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println("              Inventry Holding Period Calculater")
-		fmt.Println("        (closing inventry / cost of sales X 365)")
+		fmt.Println("            Inventry Holding Period Calculater")
+		fmt.Println("        [(closing inventry / cost of sales) X 365]")
 		fmt.Println("")
 		// Closing Inventory
 		fmt.Print("   Please enter closing inventory: ")
@@ -169,6 +169,8 @@ func calc() {
 		if validateNum2Err != nil {
 			fmt.Println("   Cost of sales must be a number")
 			mainMenu()
+		} else if num2Float64 == 0 {
+		        divisorZero()
 		}
 		fmt.Println("")
 		ans := (num1Float64 / num2Float64) * 365
@@ -178,8 +180,8 @@ func calc() {
 		//Gross Profit Margin
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println("           Gross Profit Margin Calculater")
-		fmt.Println("        (gross profit / sales revenue X 100)")
+		fmt.Println("            Gross Profit Margin Calculater")
+		fmt.Println("        [(gross profit / sales revenue) X 100]")
 		fmt.Println("")
 		// Gross Profit
 		fmt.Print("   Please enter gross profit: ")
@@ -200,6 +202,8 @@ func calc() {
 		if validateNum2Err != nil {
 			fmt.Println("   Cost of sales revenue must be a number")
 			mainMenu()
+		} else if num2Float64 == 0 {
+		        divisorZero()                		
 		}
 		fmt.Println("")
 		ans := (num1Float64 / num2Float64) * 100
@@ -209,8 +213,8 @@ func calc() {
 		// Net Profit Margin
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
-		fmt.Println("          Gross Profit Margin Calculater")
-		fmt.Println("        (net profit / sales revenue X 100)")
+		fmt.Println("           Gross Profit Margin Calculater")
+		fmt.Println("        [(net profit / sales revenue) X 100]")
 		fmt.Println("")
 		// Net Profit
 		fmt.Print("   Please enter net profit: ")
@@ -231,7 +235,9 @@ func calc() {
 		if validateNum2Err != nil {
 			fmt.Println("   Cost of sales revenue must be a number")
 			mainMenu()
-		}
+		} else if num2Float64 == 0 {
+		        divisorZero()                		
+		}		
 		fmt.Println("")
 		ans := (num1Float64 / num2Float64) * 100
 		fmt.Println("   The answer is: ", ans)
@@ -241,7 +247,7 @@ func calc() {
 		fmt.Print("\033[H\033[2J")
 		fmt.Println("")
 		fmt.Println("              Current Ratio Calculater")
-		fmt.Println("        (current assets / current liabilities)")
+		fmt.Println("        [current assets / current liabilities]")
 		fmt.Println("")
 		// Net Profit
 		fmt.Print("   Please enter current assets: ")
@@ -262,6 +268,8 @@ func calc() {
 		if validateNum2Err != nil {
 			fmt.Println("   current liabilities must be a number")
 			mainMenu()
+		} else if num2Float64 == 0 {
+		        divisorZero()                		
 		}
 		fmt.Println("")
 		ans := num1Float64 / num2Float64
